@@ -1,3 +1,16 @@
+#not-logged-in {
+  height: inherit;
+}
+
+#background-image {
+  background-image:    url(/img/background.jpg);
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;              /* optional, center the image */
+  height: inherit;
+  width: inherit;
+}
+
 md-sidenav {
   position: fixed;
   fill: #737373;

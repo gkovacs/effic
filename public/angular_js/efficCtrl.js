@@ -5,8 +5,9 @@ angular.module('app').controller('efficCtrl',
         function ($scope, $interval, efficAuthService, efficHistoryService, efficCrxService) {
 
             $scope.facebookLoggedIn = false;
+            $scope.checkedAccount = false;
             $scope.hasAccount = false;
-            $scope.loggedIn = true;
+            $scope.loggedIn = false;
             $scope.currentPage = 'dashboard';
             $scope.name = '';
             $scope.id = '';
@@ -45,9 +46,15 @@ angular.module('app').controller('efficCtrl',
                 efficAuthService.checkAccount($scope.id, function(error, accountexists) {
                    if (!error) {
                        if (accountexists) {
+                           console.log('account exists');
                            $scope.$apply(function() {
+                               $scope.checkedAccout = true;
                                $scope.hasAccount = true;
                            });
+                       } else {
+                           console.log('account does not exist');
+                           $scope.checkedAccount = true;
+                           $scope.hasAccount = false;
                        }
                    } else {
                        console.log('error in checking account');
