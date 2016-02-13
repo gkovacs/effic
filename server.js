@@ -13,27 +13,26 @@ var logger = require("./logger");
 var db = require("./db");
 var webRoutes = require("./web-routes")(__dirname);
 
-var selfSignedHttps = require('self-signed-https')
 var forceSsl = require('force-ssl')
 
-nconf.argv().env();
+var is_heroku = (typeof process.env.PORT !== 'undefined' && process.env.PORT != null)
 
-var PORT = nconf.get("PORT") || 9001;
-var HTTPSPORT = nconf.get("HTTPSPORT");
-if (!HTTPSPORT) {
-    if (PORT == 80) {
-        HTTPSPORT = 443;
-    } else {
-        HTTPSPORT = PORT + 1;
-    }
+if (is_heroku) {
+    http_port = process.env.PORT;
+    http.listen(PORT, function(){
+        logger.info("Listening on *:" + http_port);
+    });
+} else {
+    var selfSignedHttps = require('self-signed-https')
+    var http_port = 8080;
+    var https_port = 8081;
+    http.listen(http_port, function(){
+        logger.info("Listening on *:" + http_port);
+    });
+    selfSignedHttps(app).listen(https_port);
+    forceSsl.https_port = https_port;
 }
 
-http.listen(PORT, function(){
-    logger.info("Listening on *:" + PORT);
-});
-
-selfSignedHttps(app).listen(HTTPSPORT);
-forceSsl.https_port = HTTPSPORT;
 app.use(forceSsl);
 
 app.get('/', webRoutes.extension_check_redirect);
