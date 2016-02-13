@@ -4,15 +4,20 @@ angular.module('app').controller('efficCtrl',
     ['$scope', 'efficAuthService', 'efficHistoryService', 'efficCrxService',
         function ($scope, efficAuthService, efficHistoryService, efficCrxService) {
 
+            $scope.loggedIn = false;
             $scope.currentPage = 'dashboard';
+            $scope.name = '';
+            $scope.id = '';
 
             console.log('getting data');
-            efficCrxService.getFieldsFromExtension(['chrome_history_timespent_domain_past_24_hours'], function(data) {
+            efficCrxService.getFieldsFromExtension(['facebook_fullname', 'facebook_id'], function(data) {
                 console.log('got data');
                 console.log(data);
+                $scope.$apply(function() {
+                    $scope.name = data.facebook_fullname;
+                    $scope.id = data.facebook_id;
+                });
             });
-
-            $scope.loggedIn = true;
 
             $scope.dashboardClick = function() {
                 console.log('clicked on dashboard');
