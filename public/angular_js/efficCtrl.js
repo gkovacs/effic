@@ -1,25 +1,59 @@
 'use strict';
 
 angular.module('app').controller('efficCtrl',
-    ['$scope', 'efficAuthService', 'efficHistoryService', 'efficCrxService',
-        function ($scope, efficAuthService, efficHistoryService, efficCrxService) {
+    ['$scope', '$interval', 'efficAuthService', 'efficHistoryService', 'efficCrxService',
+        function ($scope, $interval, efficAuthService, efficHistoryService, efficCrxService) {
 
+            $scope.facebookLoggedIn = false;
+            $scope.hasAccount = false;
             $scope.loggedIn = true;
             $scope.currentPage = 'dashboard';
             $scope.name = '';
             $scope.id = '';
             $scope.pictureUrl = '';
 
-            console.log('getting data');
-            efficCrxService.getFieldsFromExtension(['facebook_fullname', 'facebook_id', 'facebook_profilepic'], function(data) {
-                console.log('got data');
-                console.log(data);
-                $scope.$apply(function() {
-                    $scope.name = data.facebook_fullname;
-                    $scope.id = data.facebook_id;
-                    $scope.pictureUrl = data.facebook_profilepic;
+            var checkFBLogin = $interval(function() {
+                efficCrxService.getFieldsFromExtension(['facebook_loggedin'], function(data){
+                    console.log('checking if logged into FB');
+                    if (data.facebook_loggedin) {
+                        $scope.$apply(function() {
+                            console.log('user is logged in to FB');
+                            $scope.facebookLoggedIn = true;
+                            $interval.cancel(checkFBLogin);
+                            initFacebook(checkAccount)
+                        });
+                    }
                 });
-            });
+            }, 1000);
+
+            var initFacebook =  function(callback) {
+                console.log('getting fields data');
+                efficCrxService.getFieldsFromExtension(['facebook_fullname', 'facebook_id', 'facebook_profilepic'], function(data) {
+                    console.log('got fields data');
+                    console.log(data);
+                    $scope.$apply(function() {
+                        $scope.name = data.facebook_fullname;
+                        $scope.id = data.facebook_id;
+                        $scope.pictureUrl = data.facebook_profilepic;
+                    });
+                    callback();
+                });
+            };
+
+            var checkAccount = function() {
+                console.log('checking if account exists in server');
+                efficAuthService.checkAccount($scope.id, function(error, accountexists) {
+                   if (!error) {
+                       if (accountexists) {
+                           $scope.$apply(function() {
+                               $scope.hasAccount = true;
+                           });
+                       }
+                   } else {
+                       console.log('error in checking account');
+                   }
+                });
+            };
 
             $scope.dashboardClick = function() {
                 console.log('clicked on dashboard');
