@@ -18,7 +18,8 @@
     "mongod": "^1.3.0",
     "nconf": "^0.8.4",
     "path": "^0.12.7",
-    "promise": "^7.1.1"
+    "promise": "^7.1.1",
+    "self-signed-https": "^1.0.5"
   },
   "devDependencies": {},
   "scripts": {

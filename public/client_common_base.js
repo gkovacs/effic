@@ -22,7 +22,7 @@
     } else {
       return setTimeout(function(){
         return once_available(selector, callback);
-      }, 1000);
+      }, 100);
     }
   };
 }).call(this);

@@ -11,18 +11,34 @@ var path = require("path");
 var crypto = require("crypto");
 var logger = require("./logger");
 var db = require("./db");
+var webRoutes = require("./web-routes")(__dirname);
+
+var selfSignedHttps = require('self-signed-https')
+var forceSsl = require('force-ssl')
 
 nconf.argv().env();
 
 var PORT = nconf.get("PORT") || 9001;
+var HTTPSPORT = nconf.get("HTTPSPORT");
+if (!HTTPSPORT) {
+    if (PORT == 80) {
+        HTTPSPORT = 443;
+    } else {
+        HTTPSPORT = PORT + 1;
+    }
+}
 
 http.listen(PORT, function(){
     logger.info("Listening on *:" + PORT);
 });
 
-app.get('/', function(req, res){
-    return res.send('hello world');
-});
+selfSignedHttps(app).listen(HTTPSPORT);
+forceSsl.https_port = HTTPSPORT;
+app.use(forceSsl);
+
+app.get('/', webRoutes.extension_check_redirect);
+app.get('/index', webRoutes.extension_check_redirect);
+app.get('/welcome', webRoutes.welcome);
 
 /**
  * Adds a new account to the application (request with user_id)
@@ -30,7 +46,8 @@ app.get('/', function(req, res){
 app.post("/account/new", function(req, res){
     var check = argCheck(req.body, {
         user_id: "string",
-        history: "object"
+        trends: "object",
+        goals: "object"
     });
 
     if(!check.valid){
@@ -54,7 +71,8 @@ app.post("/account/new", function(req, res){
 
             return db.insert("accounts", {
                 user_id: req.body.user_id,
-                history: req.body.history       // TODO: CHANGE HOW PUTTING IN HISTORY
+                trends: req.body.trends,       // TODO: CHANGE HOW PUTTING IN STUFF
+                goals: req.body.goals
             });
         })
         .then(function(data){
@@ -92,9 +110,9 @@ app.post("/account/check", function(req, res){
 });
 
 /**
- * Returns history data of a user
+ * Returns data of a user
  */
-app.post("/account/history", function(req, res){
+app.post("/account/history/retrieve", function(req, res){
     var check = argCheck(req.body, {
         user_id: "string"
     });
@@ -127,9 +145,9 @@ app.post("/account/history", function(req, res){
 });
 
 /**
- * Adds browsing data to a given user
+ * Adds trend data to a given user
  */
-app.put("/account/add", function(req, res){
+app.put("/account/trend/add", function(req, res){
     var check = argCheck(req.body, {
         user_id: "string",
         store: "object"
@@ -156,7 +174,7 @@ app.put("/account/add", function(req, res){
                 user_id: req.params.hardware_id
             }, {
                 $set: {
-                    history: req.body.store    //TODO Update with better way of adding information
+                    trends: req.body.store    //TODO Update with better way of adding information
                 }
             }, {
                 upsert: false
@@ -171,7 +189,51 @@ app.put("/account/add", function(req, res){
         });
 });
 
-app.use(express.static("public"));
+/**
+ * Adds trend data to a given user
+ */
+app.put("/account/goal/add", function(req, res){
+    var check = argCheck(req.body, {
+        user_id: "string",
+        store: "object"
+    });
+
+    if(!check.valid){
+        res.status(400).send(check.error);
+        return;
+    }
+
+    // TODO Process the additional data to store into however the data will be modeled
+    //
+    //
+
+    db.query("accounts", {
+        user_id: req.params.user_id
+    })
+        .then(function(data){
+            if(data.length != 1){
+                res.status(400).send("Invalid user ID.");
+                return;
+            }
+            return db.update("accounts", {
+                user_id: req.params.hardware_id
+            }, {
+                $set: {
+                    goals: req.body.store    //TODO Update with better way of adding information
+                }
+            }, {
+                upsert: false
+            });
+        })
+        .then(function(){
+            res.status(200).send();
+        })
+        .catch(function(err){
+            logger.error(err.stack);
+            res.status(500).send("Internal server error.  Try again in a minute.");
+        });
+});
+
 
 /**
  * Ensures that the given argument object matches the given schema.
@@ -200,6 +262,6 @@ var argCheck = function(args, type){
         }
     }
     return {valid: true};
-}
+};
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use('/', express.static(path.join(__dirname, 'public')));

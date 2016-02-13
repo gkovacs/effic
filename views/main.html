@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body ng-controller="efficCtrl">
+    <div id="not-logged-in" ng-hide="loggedIn">
+
+    </div>
+    <div id="logged-in" ng-show="loggedIn">
+        <div class="wrapper layout-column">
+            <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="{{true}}" flex style="position: fixed;">
+                <md-toolbar class="md-hue-2 navheader">
+                    <span flex></span>
+                    <div layout="column" class="md-toolbar-tools-bottom inset">
+                        <img ng-src="{{user.image}}" alt="" class="md-avatar">
+                        <span></span>
+                        <div>{{name}}</div>
+                    </div>
+                </md-toolbar>
+                <md-list>
+                    <md-subheader class="md-no-sticky">Visualization</md-subheader>
+                    <md-list-item md-ink-ripple class="md-clickable" ng-click="dashboardClick()">
+                        <i class="material-icons nav-icon">dashboard</i>
+                        <p>Dashboard</p>
+                    </md-list-item>
+                    <md-list-item md-ink-ripple class="md-clickable" ng-click="usageClick()">
+                        <i class="material-icons nav-icon">data_usage</i>
+                        <p>Usage</p>
+                    </md-list-item>
+                    <md-list-item md-ink-ripple class="md-clickable" ng-click="trendsClick()">
+                        <i class="material-icons nav-icon">trending_up</i>
+                        <p>Trends</p>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item md-ink-ripple class="md-clickable" ng-click="goalsClick()">
+                        <i class="material-icons nav-icon">add_location</i>
+                        <p>Goals</p>
+                    </md-list-item>
+                    <md-list-item md-ink-ripple class="md-clickable" ng-click="settingsClick()">
+                        <i class="material-icons nav-icon">settings</i>
+                        <p>Settings</p>
+                    </md-list-item>
+                </md-list>
+            </md-sidenav>
+        </div>
+        <div id="toolbar" class="md-toolbar-tools card-2">
+            <h2>
+                <span>{{capitalizeFirstLetter(currentPage)}}</span>
+            </h2>
+        </div>
+        <div id="dashboard-container" class=="content-container" ng-show="currentPage == 'dashboard'">
+
+        </div>
+        <div id="usage-container" class="content-container" ng-show="currentPage == 'usage'">
+            <md-card class="visualization-holder">
+                <div ng-cloak>
+                    <md-content>
+                        <md-tabs md-dynamic-height md-border-bottom>
+                            <md-tab label="daily">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-1">Tab One</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="weekly">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-1">Tab Two</h1>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+                                    <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
+                                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="monthly">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-1">Tab Three</h1>
+                                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                                </md-content>
+                            </md-tab>
+                            <md-tab label="all time">
+                                <md-content class="md-padding">
+                                    <h1 class="md-display-1">Tab Four</h1>
+                                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                                </md-content>
+                            </md-tab>
+                        </md-tabs>
+                    </md-content>
+                </div>
+            </md-card>
+        </div>
+        <div id="trends-container" class="content-container" ng-show="currentPage == 'trends'">
+
+        </div>
+        <div id="goals-container" class="content-container" ng-show="currentPage == 'goals'">
+
+        </div>
+        <div id="settings-container" class="content-container" ng-show="currentPage == 'settings'">
+
+        </div>
+    </div>
+
+    <!--SCRIPTS-->
+    <script src="/levn.js"></script>
+    <script src="/autosurvey_extension_id.js"></script>
+    <script src="/send_extension.js"></script>
+    <script src="/client_common_base.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/angular/angular.js"></script>
+    <script type="text/javascript" src="/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="/angular_js/app.js"></script>
+    <script type="text/javascript" src="/angular_js/efficCtrl.js"></script>
+    <script type="text/javascript" src="/angular_js/efficAuthService.js"></script>
+    <script type="text/javascript" src="/angular_js/efficHistoryService.js"></script>
+    <script type="text/javascript" src="/angular_js/efficCrxService.js"></script>
+</body>
+</html>
