@@ -201,4 +201,4 @@ var argCheck = function(args, type){
     return {valid: true};
 };
 
-app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'public')));
