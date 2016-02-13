@@ -11,6 +11,7 @@ var path = require("path");
 var crypto = require("crypto");
 var logger = require("./logger");
 var db = require("./db");
+var webRoutes = require("./web-routes")(__dirname);
 
 nconf.argv().env();
 
@@ -20,9 +21,9 @@ http.listen(PORT, function(){
     logger.info("Listening on *:" + PORT);
 });
 
-app.get('/', function(req, res){
-    return res.send('hello world');
-});
+app.get('/', webRoutes.index_redirect);
+app.get('/index', webRoutes.index_redirect);
+app.get('/welcome', webRoutes.welcome);
 
 /**
  * Adds a new account to the application (request with user_id)
@@ -171,8 +172,6 @@ app.put("/account/add", function(req, res){
         });
 });
 
-app.use(express.static("public"));
-
 /**
  * Ensures that the given argument object matches the given schema.
  * @param {object} args The provided argument object
@@ -200,6 +199,6 @@ var argCheck = function(args, type){
         }
     }
     return {valid: true};
-}
+};
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use('/public', express.static(path.join(__dirname, 'public')));
