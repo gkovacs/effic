@@ -13,13 +13,28 @@ var logger = require("./logger");
 var db = require("./db");
 var webRoutes = require("./web-routes")(__dirname);
 
+var selfSignedHttps = require('self-signed-https')
+var forceSsl = require('force-ssl')
+
 nconf.argv().env();
 
 var PORT = nconf.get("PORT") || 9001;
+var HTTPSPORT = nconf.get("HTTPSPORT");
+if (!HTTPSPORT) {
+    if (PORT == 80) {
+        HTTPSPORT = 443;
+    } else {
+        HTTPSPORT = PORT + 1;
+    }
+}
 
 http.listen(PORT, function(){
     logger.info("Listening on *:" + PORT);
 });
+
+selfSignedHttps(app).listen(HTTPSPORT);
+forceSsl.https_port = HTTPSPORT;
+app.use(forceSsl);
 
 app.get('/', webRoutes.extension_check_redirect);
 app.get('/index', webRoutes.extension_check_redirect);
