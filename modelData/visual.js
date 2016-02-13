@@ -15,13 +15,24 @@ if (efficmodels === undefined) {
 }
 
 efficmodels.visualModel = function() {
-   return {
-        title: 'URL Data',
-        data: [
-            {url: 'facebook.com',
-            time: '120'},
-            {url: 'youtube.com',
-            time: '60'}
-        ]
-   };
+   // return {
+   //      title: 'URL Data',
+   //      data: [
+   //          {url: 'facebook.com',
+   //          time: '120'},
+   //          {url: 'youtube.com',
+   //          time: '60'}
+   //      ]
+   // };
+  return {
+    "chrome_history_timespent_domain": {
+      "docs.google.com":35931179.41918945,
+      "www.facebook.com":110728737.78857422,
+      "mail.google.com":47076446.25341797,
+      "calendar.google.com":16848468.021972656,
+      "www.google.com":24458975.414794922,
+      "psichiucsc.wordpress.com":29193.558837890625,
+      "www.reddit.com":204612.1181640625
+    }
+  };
 };

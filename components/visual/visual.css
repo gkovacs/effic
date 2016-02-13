@@ -24,3 +24,11 @@ you use won't conflict with these names.
     border: 1px dashed #722b00;
     display: inline-block;
 }
+
+/*div {
+    display: inline;
+}*/
+
+#sidenav {
+    border-bottom: 1px solid black;
+}

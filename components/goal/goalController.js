@@ -11,10 +11,8 @@
  *   <div ng-include="'components/example/exampleTemplate.html'" ng-controller="ExampleController"></div>
  */
 
-efficApp.controller('VisualController', ['$scope', function($scope) {
+efficApp.controller('GoalController', ['$scope', function($scope) {
    if ($scope.dashboard) {
-      $scope.dashboard.title = 'Effic Visual';
+      $scope.dashboard.title = 'Effic Goals';
    }
-
-   $scope.url_data = window.efficmodels.visualModel().data;
 }]);
