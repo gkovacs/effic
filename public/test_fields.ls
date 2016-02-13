@@ -6,7 +6,7 @@ getFieldsFromExtension = (fields_list, callback) ->
 
 
 document.addEventListener 'DOMContentLoaded', ->
-  getFieldsFromExtension ['facebook_fullname', 'facebook_id'], (data) ->
+  getFieldsFromExtension ['facebook_loggedin', 'facebook_fullname', 'facebook_id'], (data) ->
     console.log 'got fields from extension'
     console.log data
     document.querySelector('#rawdata').innerText = JSON.stringify(data)
