@@ -4,7 +4,7 @@ angular.module('app').controller('efficCtrl',
     ['$scope', 'efficAuthService', 'efficHistoryService', 'efficCrxService',
         function ($scope, efficAuthService, efficHistoryService, efficCrxService) {
 
-            $scope.loggedIn = true;
+            $scope.loggedIn = false;
             $scope.currentPage = 'dashboard';
             $scope.name = '';
             $scope.id = '';
