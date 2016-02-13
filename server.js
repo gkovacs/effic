@@ -19,7 +19,7 @@ var is_heroku = (typeof process.env.PORT !== 'undefined' && process.env.PORT != 
 
 if (is_heroku) {
     http_port = process.env.PORT;
-    http.listen(PORT, function(){
+    http.listen(http_port, function(){
         logger.info("Listening on *:" + http_port);
     });
 } else {
