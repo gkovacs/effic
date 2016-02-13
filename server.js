@@ -95,7 +95,7 @@ app.post("/account/check", function(req, res){
 /**
  * Returns history data of a user
  */
-app.post("/account/history", function(req, res){
+app.post("/account/history/retrieve", function(req, res){
     var check = argCheck(req.body, {
         user_id: "string"
     });
@@ -130,7 +130,7 @@ app.post("/account/history", function(req, res){
 /**
  * Adds browsing data to a given user
  */
-app.put("/account/add", function(req, res){
+app.put("/account/history/add", function(req, res){
     var check = argCheck(req.body, {
         user_id: "string",
         store: "object"

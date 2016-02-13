@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('app').controller('efficCtrl',
-    ['$scope', 'efficAuthService',
-        function ($scope, efficAuthService) {
+    ['$scope', 'efficAuthService', 'efficHistoryService',
+        function ($scope, efficAuthService, efficHistoryService) {
+
+            $scope.loggedIn = true;
 
             $scope.dashboardClick = function() {
                 console.log('clicked on dashboard');
