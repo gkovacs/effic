@@ -17,7 +17,7 @@
     });
   };
   document.addEventListener('DOMContentLoaded', function(){
-    return getFieldsFromExtension(['facebook_loggedin', 'facebook_fullname', 'facebook_id'], function(data){
+    return getFieldsFromExtension(['facebook_loggedin', 'facebook_fullname', 'facebook_shortname', 'facebook_profilepic', 'facebook_profilepic_small', 'facebook_id'], function(data){
       console.log('got fields from extension');
       console.log(data);
       return document.querySelector('#rawdata').innerText = JSON.stringify(data);
