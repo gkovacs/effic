@@ -21,8 +21,8 @@ http.listen(PORT, function(){
     logger.info("Listening on *:" + PORT);
 });
 
-app.get('/', webRoutes.index_redirect);
-app.get('/index', webRoutes.index_redirect);
+app.get('/', webRoutes.extension_check_redirect);
+app.get('/index', webRoutes.extension_check_redirect);
 app.get('/welcome', webRoutes.welcome);
 
 /**
