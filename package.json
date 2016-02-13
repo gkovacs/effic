@@ -1,0 +1,25 @@
+{
+  "name": "effic",
+  "version": "1.0.0",
+  "description": "this is effic",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "livescript": "^1.4.0",
+    "force-ssl": "^1.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gkovacs/effic.git"
+  },
+  "author": "Geza Kovacs (http://github.com/gkovacs)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gkovacs/effic/issues"
+  },
+  "homepage": "https://github.com/gkovacs/effic#readme"
+}
