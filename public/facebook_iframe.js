@@ -16,7 +16,6 @@
       });
     });
   };
-
   document.addEventListener('DOMContentLoaded', function(){
     return getFieldsFromExtension(['chrome_history_timespent_domain_past_24_hours'], function(data){
       var facebook_time, ref$, facebook_time_minutes;
