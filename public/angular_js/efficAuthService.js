@@ -4,7 +4,7 @@ angular.module('app').service('efficAuthService',
 
             this.createAccount = function(userid, callback) {
                 $http({method: 'POST', url: '/account/new',
-                    data: {user_id: userid}})
+                    data: {user_id: userid, trends: {}, goals: {}}})
                     .success((function(data, status, headers,config) {
                         callback(null);
                     }).bind(this))

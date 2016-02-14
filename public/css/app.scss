@@ -1,3 +1,95 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+#not-logged-in {
+  height: inherit;
+}
+
+#background-image {
+  background-image:    url(/img/background.jpg);
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;              /* optional, center the image */
+  height: inherit;
+  width: inherit;
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -ms-filter: blur(10px);
+  -o-filter: blur(10px);
+  filter: blur(10px);
+}
+
+.center-box {
+  margin: auto;
+  height: 220px;
+  width: 400px;
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #000000;
+  opacity: 0.7;
+  border-radius: 10px;
+  .box-section {
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: center;
+  }
+}
+
+.plugin-btn {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  margin-left: 0px;
+}
+
+.button-icon {
+  vertical-align: middle;
+}
+
+.fb-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.plugin-btn > div:nth-child(1) {
+  flex: 0 0 40px;
+}
+
+.plugin-btn > div:nth-child(2) {
+  flex-grow: 1;
+}
+
+.fb-btn {
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  margin-left: 0px;
+}
+
+.fb-btn > div:nth-child(1) {
+  flex: 0 0 40px;
+}
+
+.fb-btn > div:nth-child(2) {
+  flex-grow: 1;
+}
+
+.continue-btn {
+  width: 50%;
+  margin-top: 15px;
+  background-color: lightgreen;
+}
+
 md-sidenav {
   position: fixed;
   fill: #737373;
@@ -37,6 +129,15 @@ div.tooltip span
 
 .navheader{
   height: 200px;
+}
+
+.userimage {
+  height: 124px;
+  width: 124px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
 }
 
 #toolbar {
