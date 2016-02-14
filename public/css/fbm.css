@@ -38,4 +38,16 @@ timer {
   margin-right: 12px;
   margin-bottom: 12px; }
 
+.name {
+  color: #3b5998;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold; }
+
+.fbtimeposted {
+  color: #9197a3;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal; }
+
 /*# sourceMappingURL=fbm.css.map */
