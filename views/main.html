@@ -47,7 +47,7 @@
     <div id="logged-in" ng-show="loggedIn" ng-cloak>
         <div class="wrapper layout-column">
             <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="{{true}}" flex style="position: fixed;">
-                <md-toolbar class="md-hue-2 navheader">
+                <md-toolbar class="navheader" style="background-color: #692194">
                     <span flex></span>
                     <div layout="column" class="md-toolbar-tools-bottom inset">
                         <img ng-src="{{pictureUrl}}" alt="" class="md-avatar userimage">
@@ -81,7 +81,7 @@
                 </md-list>
             </md-sidenav>
         </div>
-        <div id="toolbar" class="md-toolbar-tools card-2">
+        <div id="toolbar" class="md-toolbar-tools card-2" style="background-color: #692194">
             <h2>
                 <span>{{capitalizeFirstLetter(currentPage)}}</span>
             </h2>

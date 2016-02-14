@@ -85,7 +85,8 @@ md-sidenav {
     margin-right: 30px; }
 
 .navheader {
-  height: 200px; }
+  height: 200px;
+  background-color: #692194; }
 
 .userimage {
   height: 124px;
@@ -98,7 +99,8 @@ md-sidenav {
 #toolbar {
   margin-left: 320px; }
   #toolbar h2 {
-    margin-left: 10px; }
+    margin-left: 10px;
+    color: white; }
 
 .content-container {
   margin-left: 320px; }
