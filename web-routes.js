@@ -22,5 +22,11 @@ module.exports = function(__dirname) {
             time_started : req.query.time_started
         });
     };
+
+    // GET /facebook_message_links
+    WebRoutes.facebook_message_links = function(req, res) {
+        res.sendFile(__dirname + '/views/facebook_message_links.html');
+    };
+
     return WebRoutes;
 };

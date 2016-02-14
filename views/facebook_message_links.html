@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/css/fbm.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://chrome.google.com/webstore/detail/efeilbcfmofhibadbmabeffihohfngnf" rel="chrome-webstore-item">
+</head>
+<body ng-controller="fbmessagelinksCtrl">
+<div class="container">
+    <div class="time-container">
+        <div class="spacer"></div>
+        <div class="line question">
+            <span>Would you like to go back to your other tasks?</span>
+        </div>
+        <div class="line" ng-repeat="site in sites" ng-cloak>
+            <span><a class="link" href="{{site.url}}">{{site.title}}</a></span>
+        </div>
+        <div class="spacer"></div>
+    </div>
+</div>
+<div class="container top-overlay layout-row">
+    <img class="fake-profile" src="/img/effic-icon.png">
+    <div class="heading" layout-column><div class="name">Effic</div><div class="fbtimeposted">Now</div></div>
+</div>
+
+<!--SCRIPTS-->
+<script src="/levn.js"></script>
+<script src="/autosurvey_extension_id.js"></script>
+<script src="/send_extension.js"></script>
+<script src="/client_common_base.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/angular/angular.js"></script>
+<script type="text/javascript" src="/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src="/angular-aria/angular-aria.js"></script>
+<script type="text/javascript" src="/angular-material/angular-material.js"></script>
+<script type="text/javascript" src="/angular_js/fbapplinks.js"></script>
+<script type="text/javascript" src="/angular_js/fbmessagelinksCtrl.js"></script>
+<script type="text/javascript" src="/angular_js/efficAuthService.js"></script>
+<script type="text/javascript" src="/angular_js/efficHistoryService.js"></script>
+<script type="text/javascript" src="/angular_js/efficCrxService.js"></script>
+</body>
+</html>

@@ -19,7 +19,8 @@
 .line {
   margin-top: 2px;
   margin-bottom: 2px;
-  font-family: Helvetica, Aria, sans-serif; }
+  font-family: Helvetica, Aria, sans-serif;
+  padding: 0 12px; }
 
 timer {
   font-size: 2rem; }
@@ -49,5 +50,14 @@ timer {
   font-family: helvetica, arial, sans-serif;
   font-size: 12px;
   font-weight: normal; }
+
+.question {
+  font-weight: bold; }
+
+.link {
+  color: #3b5998;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 13px; }
 
 /*# sourceMappingURL=fbm.css.map */

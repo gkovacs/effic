@@ -40,6 +40,7 @@ app.get('/', webRoutes.index_redirect);
 app.get('/index', webRoutes.index_redirect);
 app.get('/welcome', webRoutes.welcome);
 app.get('/facebook_message', webRoutes.facebook_message);
+app.get('/facebook_message_links', webRoutes.facebook_message_links);
 
 /**
  * Adds a new account to the application (request with user_id)
