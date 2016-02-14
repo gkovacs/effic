@@ -17,7 +17,7 @@
             <span>Would you like to go back to your other tasks?</span>
         </div>
         <div class="line" ng-repeat="site in sites" ng-cloak>
-            <span><a class="link" href="{{site.url}}">{{site.title}}</a></span>
+            <span><a class="link" href="{{site.url}}">{{truncateString(site.title)}}</a></span>
         </div>
         <div class="spacer"></div>
     </div>
