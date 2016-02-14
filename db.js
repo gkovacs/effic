@@ -1,7 +1,10 @@
 "use strict";
 
 var mongo = require("mongod");
-var dbPath = "mongodb://localhost:27017/effic";
+var dbPath = process.env.MONGOLAB_URI;
+if (!dbPath) {
+    dbPath = "mongodb://localhost:27017/effic";
+}
 var db = mongo.connect(dbPath, ["accounts"]);
 var ObjectId = mongo.ObjectId;
 var Promise = require("promise");
