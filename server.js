@@ -1,6 +1,6 @@
 "use strict";
 
-require('dotenv').config();
+//require('dotenv').config();
 var express = require("express");
 var app = express();
 var bodyparser = require("body-parser");
@@ -13,7 +13,7 @@ var logger = require("./logger");
 var db = require("./db");
 var webRoutes = require("./web-routes")(__dirname);
 
-var forceSsl = require('force-ssl')
+var forceSsl = require('force-ssl');
 
 var is_heroku = (typeof process.env.PORT !== 'undefined' && process.env.PORT != null)
 
@@ -23,7 +23,7 @@ if (is_heroku) {
         logger.info("Listening on *:" + http_port);
     });
 } else {
-    var selfSignedHttps = require('self-signed-https')
+    var selfSignedHttps = require('self-signed-https');
     var http_port = 8080;
     var https_port = 8081;
     http.listen(http_port, function(){
@@ -35,8 +35,8 @@ if (is_heroku) {
 
 app.use(forceSsl);
 
-app.get('/', webRoutes.extension_check_redirect);
-app.get('/index', webRoutes.extension_check_redirect);
+app.get('/', webRoutes.index_redirect);
+app.get('/index', webRoutes.index_redirect);
 app.get('/welcome', webRoutes.welcome);
 
 /**

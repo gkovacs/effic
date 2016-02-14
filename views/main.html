@@ -7,16 +7,40 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://chrome.google.com/webstore/detail/efeilbcfmofhibadbmabeffihohfngnf" rel="chrome-webstore-item">
 </head>
 <body ng-controller="efficCtrl">
     <div id="not-logged-in" ng-hide="loggedIn">
         <div id="background-image"></div>
-        <div class="center-box">
-            <div>
-
+        <div class="center-box card-3 layout-column">
+            <div class="box-section plugin-check" flex>
+                <md-button class="md-raised plugin-btn">
+                    <div>
+                        <span ng-hide="hasPlugin"><i class="material-icons button-icon">file_download</i></span>
+                        <span ng-show="hasPlugin"><i class="material-icons button-icon" style="color: green">check_circle</i></span>
+                    </div>
+                    <div>
+                        <span ng-hide="hasPlugin">Download the Chrome Extension</span>
+                        <span ng-show="hasPlugin">Chrome Extension installed</span>
+                    </div>
+                </md-button>
             </div>
-            <div>
-
+            <div class="box-section facebook-check" flex>
+                <md-button class="md-raised fb-btn layout-row">
+                    <div>
+                        <img ng-hide="facebookLoggedIn" src="/img/fb.png" class="fb-icon button-icon">
+                        <span ng-show="facebookLoggedIn"><i class="material-icons button-icon" style="color: green">check_circle</i></span>
+                    </div>
+                    <div>
+                        <span ng-hide="facebookLoggedIn">Login to Facebook</span>
+                        <span ng-show="facebookLoggedIn">Logged in to Facebook</span>
+                    </div>
+                </md-button>
+            </div>
+            <div class="box-section continue" flex>
+                <md-button class="md-raised continue-btn" ng-disabled="!hasPlugin || !facebookLoggedIn || !checkedAccount" style="background-color: lightgreen;" ng-click="init()">
+                    <span>Continue<i class="material-icons button-icon">play_arrow</i></span>
+                </md-button>
             </div>
         </div>
     </div>
