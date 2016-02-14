@@ -12,7 +12,7 @@ angular.module('app').controller('fbmessagelinksCtrl',
                         if (returnstring.length + arr[i].length > 75) {
                             return returnstring + "...";
                         } else {
-                            returnstring += arr[i];
+                            returnstring += ' ' + arr[i];
                         }
                     }
                 }
