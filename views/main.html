@@ -86,33 +86,39 @@
                 <span>{{capitalizeFirstLetter(currentPage)}}</span>
             </h2>
         </div>
-        <div id="dashboard-container" class=="content-container" ng-show="currentPage == 'dashboard'">
-
+        <div id="dashboard-container" class="content-container" ng-show="currentPage == 'dashboard'">
+            <md-card>
+                 <div ng-cloak>
+                    <md-content>
+                        <img src="http://ecx.images-amazon.com/images/I/61KWz8c14dL._SL1500_.jpg">
+                    </md-content>
+                </div>
+            </md-card>
         </div>
         <div id="usage-container" class="content-container" ng-show="currentPage == 'usage'">
             <md-card class="visualization-holder">
                 <div ng-cloak>
                     <md-content>
                         <md-tabs md-dynamic-height md-border-bottom>
-                            <md-tab label="daily" ng-click="display_data(0)">
+                            <md-tab label="daily">
                                 <md-content class="md-padding">
                                     <h1 class="md-display-1">Daily</h1>
                                     <div id="chart-daily" class="chart"></div>
                                 </md-content>
                             </md-tab>
-                            <md-tab label="weekly" ng-click="display_data(1)">
+                            <md-tab label="weekly">
                                 <md-content class="md-padding">
                                     <h1 class="md-display-1">Weekly</h1>
                                     <div id="chart-weekly" class="chart"></div>
                                 </md-content>
                             </md-tab>
-                            <md-tab label="monthly" ng-click="display_data(2)">
+                            <md-tab label="monthly">
                                 <md-content class="md-padding">
                                     <h1 class="md-display-1">Monthly</h1>
                                     <div id="chart-monthly" class="chart"></div>
                                 </md-content>
                             </md-tab>
-                            <md-tab label="all time" ng-click="display_data(3)">
+                            <md-tab label="all time">
                                 <md-content class="md-padding">
                                     <h1 class="md-display-1">All Time</h1>
                                     <div id="chart-all" class="chart"></div>
@@ -124,13 +130,31 @@
             </md-card>
         </div>
         <div id="trends-container" class="content-container" ng-show="currentPage == 'trends'">
-
+            <md-card>
+                 <div ng-cloak>
+                    <md-content>
+                        <img src="http://ecx.images-amazon.com/images/I/61KWz8c14dL._SL1500_.jpg">
+                    </md-content>
+                </div>
+            </md-card>
         </div>
         <div id="goals-container" class="content-container" ng-show="currentPage == 'goals'">
-
+            <md-card>
+                 <div ng-cloak>
+                    <md-content>
+                        <img src="http://ecx.images-amazon.com/images/I/61KWz8c14dL._SL1500_.jpg">
+                    </md-content>
+                </div>
+            </md-card>
         </div>
         <div id="settings-container" class="content-container" ng-show="currentPage == 'settings'">
-
+            <md-card>
+                 <div ng-cloak>
+                    <md-content>
+                        <img src="http://ecx.images-amazon.com/images/I/61KWz8c14dL._SL1500_.jpg">
+                    </md-content>
+                </div>
+            </md-card>
         </div>
     </div>
 
@@ -141,6 +165,7 @@
     <script src="/send_extension.js"></script>
     <script src="/client_common_base.js"></script>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/public/categories.js"></script>
     <script type="text/javascript" src="/angular/angular.js"></script>
     <script type="text/javascript" src="/angular-animate/angular-animate.js"></script>
     <script type="text/javascript" src="/angular-aria/angular-aria.js"></script>

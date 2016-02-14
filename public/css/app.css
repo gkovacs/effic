@@ -91,11 +91,12 @@ div.tooltip:hover {
   text-decoration: none; }
 
 div.tooltip span {
-  z-index: 10;
   display: none;
   margin-bottom: 30px;
   margin-left: 30px;
-  line-height: 16px; }
+  line-height: 16px;
+  border-radius: 2px;
+  /*opacity: 0.8;*/ }
 
 div.tooltip:hover span {
   display: inline;
@@ -104,18 +105,13 @@ div.tooltip:hover span {
   color: white;
   background-color: black; }
 
-/*CSS3 extras*/
-div.tooltip span {
-  border-radius: 2px;
-  /*opacity: 0.8;*/ }
-
 .chart div {
   font: 10px sans-serif;
-  background-color: steelblue;
   text-align: left;
   padding: 3px;
   margin: 1px;
-  color: white; }
+  color: white;
+  border: 1px solid black; }
 
 .navheader {
   height: 200px; }
