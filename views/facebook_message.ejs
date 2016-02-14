@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/css/fbm.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://chrome.google.com/webstore/detail/efeilbcfmofhibadbmabeffihohfngnf" rel="chrome-webstore-item">
+</head>
+<body ng-controller="fbmessageCtrl">
+    <div class="container">
+        <div class="time-container">
+            <div class="spacer"></div>
+            <div class="line">
+                <span>You have spent</span>
+            </div>
+            <timer class="line" start-time="start_time" max-time-unit="'minute'" ng-cloak><b>{{mminutes}}</b> minute{{minutesS}} and <b>{{sseconds}}</b> second{{secondsS}}</timer>
+            <div class="line">
+                <span>on Facebook</span>
+            </div>
+            <div class="spacer"></div>
+        </div>
+    </div>
+    <div class="container top-overlay">
+        <img class="fake-profile" src="/img/clock.png">
+    </div>
+
+    <!--SCRIPTS-->
+    <script src="/levn.js"></script>
+    <script src="/autosurvey_extension_id.js"></script>
+    <script src="/send_extension.js"></script>
+    <script src="/client_common_base.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/humanize-duration/humanize-duration.js"></script>
+    <script src="/bower_components/momentjs/min/moment.min.js"></script>
+    <script src="/bower_components/momentjs/min/locales.min.js"></script>
+    <script type="text/javascript" src="/angular/angular.js"></script>
+    <script type="text/javascript" src="/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-timer/dist/angular-timer.min.js"></script>
+    <script type="text/javascript" src="/angular_js/fbapp.js"></script>
+    <script>
+        angular.module('$time_started', []).constant('TIME_STARTED', <%= time_started %>);
+    </script>
+    <script type="text/javascript" src="/angular_js/fbmessageCtrl.js"></script>
+    <script type="text/javascript" src="/angular_js/efficAuthService.js"></script>
+    <script type="text/javascript" src="/angular_js/efficHistoryService.js"></script>
+    <script type="text/javascript" src="/angular_js/efficCrxService.js"></script>
+</body>
+</html>
