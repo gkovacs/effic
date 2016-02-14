@@ -15,11 +15,11 @@
         <div class="center-box card-3 layout-column">
             <div class="box-section plugin-check" flex>
                 <md-button class="md-raised plugin-btn">
-                    <div>
+                    <div ng-cloak>
                         <span ng-hide="hasPlugin"><i class="material-icons button-icon">file_download</i></span>
                         <span ng-show="hasPlugin"><i class="material-icons button-icon" style="color: green">check_circle</i></span>
                     </div>
-                    <div>
+                    <div ng-cloak>
                         <span ng-hide="hasPlugin">Download the Chrome Extension</span>
                         <span ng-show="hasPlugin">Chrome Extension installed</span>
                     </div>
@@ -27,11 +27,11 @@
             </div>
             <div class="box-section facebook-check" flex>
                 <md-button class="md-raised fb-btn layout-row">
-                    <div>
+                    <div ng-cloak>
                         <img ng-hide="facebookLoggedIn" src="/img/fb.png" class="fb-icon button-icon">
                         <span ng-show="facebookLoggedIn"><i class="material-icons button-icon" style="color: green">check_circle</i></span>
                     </div>
-                    <div>
+                    <div ng-cloak>
                         <span ng-hide="facebookLoggedIn">Login to Facebook</span>
                         <span ng-show="facebookLoggedIn">Logged in to Facebook</span>
                     </div>
@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div id="logged-in" ng-show="loggedIn">
+    <div id="logged-in" ng-show="loggedIn" ng-cloak>
         <div class="wrapper layout-column">
             <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="{{true}}" flex style="position: fixed;">
                 <md-toolbar class="md-hue-2 navheader">
