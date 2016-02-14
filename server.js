@@ -34,10 +34,12 @@ if (is_heroku) {
 }
 
 app.use(forceSsl);
+app.set('view engine', 'ejs');
 
 app.get('/', webRoutes.index_redirect);
 app.get('/index', webRoutes.index_redirect);
 app.get('/welcome', webRoutes.welcome);
+app.get('/facebook_message', webRoutes.facebook_message);
 
 /**
  * Adds a new account to the application (request with user_id)

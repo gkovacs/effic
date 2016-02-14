@@ -4,7 +4,7 @@
   "main": "server.js",
   "authors": [
     "Geza Kovacs (http://github.com/gkovacs)"
-  ], 
+  ],
   "homepage": "https://github.com/gkovacs/effic",
   "moduleType": [],
   "private": true,
@@ -27,6 +27,7 @@
     "sweetalert": "~1.1.3",
     "tooltipster": "~3.3.0",
     "underscore": "~1.8.3",
-    "webcomponentsjs": "~0.7.18"
+    "webcomponentsjs": "~0.7.18",
+    "angular-timer": "^1.3.3"
   }
 }

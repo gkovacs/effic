@@ -16,9 +16,11 @@ module.exports = function(__dirname) {
         res.sendFile(__dirname + '/views/main.html');
     };
 
-    // GET /login
-    WebRoutes.login = function(req, res) {
-
+    // GET /facebook_message/?time_started=<number as string>
+    WebRoutes.facebook_message = function(req, res) {
+        res.render(__dirname + '/views/facebook_message', {
+            time_started : req.query.time_started
+        });
     };
     return WebRoutes;
 };
