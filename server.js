@@ -99,7 +99,8 @@ app.post("/account/check", function(req, res){
         return;
     }
 
-    db.query("accounts", {
+    res.status(200).send(true);
+    /*db.query("accounts", {
         user_id: req.body.user_id
     })
         .then(function(data){
@@ -108,7 +109,7 @@ app.post("/account/check", function(req, res){
         .catch(function(err){
             logger.error(err.stack);
             res.status(500).send("Internal server error.  Try again in a minute.");
-        })
+        })*/
 });
 
 /**
