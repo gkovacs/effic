@@ -64,7 +64,7 @@ angular.module('app').controller('fbmessagelinksCtrl',
             getWorkSitesVisitedInPast24Hours(function(work_sites_visited){
                 console.log(work_sites_visited);
                 $scope.$apply(function() {
-                    $scope.sites = work_sites_visited;
+                    $scope.sites = work_sites_visited.slice(0, 5);
                 });
             });
 

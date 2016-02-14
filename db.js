@@ -5,6 +5,7 @@ var dbPath = process.env.MONGOLAB_URI;
 if (!dbPath) {
     dbPath = "mongodb://localhost:27017/effic";
 }
+console.log('dbpath is ' + dbPath)
 var db = mongo.connect(dbPath, ["accounts"]);
 var ObjectId = mongo.ObjectId;
 var Promise = require("promise");
