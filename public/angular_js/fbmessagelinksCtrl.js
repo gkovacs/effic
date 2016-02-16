@@ -4,6 +4,23 @@ angular.module('app').controller('fbmessagelinksCtrl',
     ['$scope', '$interval', '$timeout', 'efficAuthService', 'efficHistoryService', 'efficCrxService',
         function ($scope, $interval, $timeout, TIME_STARTED, efficAuthService, efficHistoryService, efficCrxService) {
 
+            $scope.truncateString = function(string) {
+                if (string.length > 75) {
+                    var arr = string.split(' ');
+                    var returnstring = '';
+                    for (var i = 0; i < arr.length; i++) {
+                        if (returnstring.length + arr[i].length > 75) {
+                            return returnstring + "...";
+                        } else {
+                            returnstring += ' ' + arr[i];
+                        }
+                    }
+                }
+                else {
+                    return string;
+                }
+            };
+
             var getFieldsFromExtension, getWorkSitesVisitedInPast24Hours;
             getFieldsFromExtension = function(fields_list, callback){
                 return once_available('#autosurvey_content_script_loaded', function(){

@@ -134,6 +134,9 @@ div.tooltip:hover span {
 .content-container {
   margin-left: 320px; }
 
+.hello {
+  margin-left: 20px; }
+
 .card {
   background: #fff;
   border-radius: 2px;
